@@ -12,20 +12,20 @@ class TPQueue {
     int cur;
 
  public:
-   TPQueue():sizeTPQ(size), first(0), last(0), cur(0) {
-       arr = new T[sizeTPQ + 1];
-};
+    TPQueue():sizeTPQ(size), first(0), last(0), cur(0) {
+        arr = new T[sizeTPQ + 1];
+    }
 
     ~TPQueue() {
         delete[] arr;
     }
-    
+
     void push(const T& value) {
-      assert(cur < sizeTPQ);
+        assert(cur < sizeTPQ);
         if (cur == 0) {
             arr[last++] = value;
             cur++;
-       } else {
+        } else {
             int i = last - 1;
             bool op = 0;
             ////////////
@@ -36,17 +36,18 @@ class TPQueue {
                 arr[i] = value;
                 i--;
                 }
-         } else {
+            } else {
                 arr[last] = value;
-              }
+            }
             last++;
             cur++;
-           }
+        }
         if (last > sizeTPQ) {
             last -= sizeTPQ + 1;
         }
     }
-        const T& pop() {
+
+    const T& pop() {
         assert(cur > 0);
         cur--;
         if (first > sizeTPQ) {
